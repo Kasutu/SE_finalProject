@@ -75,11 +75,13 @@ window.onload = pageLoad();
 // start or pause the game
 function playGame(val) {
   if (val === 'play') {
+    document.getElementById('bgMusic').play();
     gameStart = true;
     pageLoad();
   }
 
   if (val === 'pause') {
+    document.getElementById('bgMusic').pause();
     gameStart = false;
   }
 }
@@ -127,6 +129,7 @@ function update() {
   if (direction.up && !player.isJumping) {
     player.velY = -movementSpeed * jumpHeight;
     player.isJumping = true;
+    document.getElementById('jump').play();
     // console.log('step 1:', -movementSpeed * jumpHeight);
   }
 
@@ -154,6 +157,7 @@ function update() {
     player.isJumping = false;
     player.y = platform.y - player.height;
     player.velY = 0;
+    document.getElementById('touch').play();
   }
 
   console.log('onFloor:', floorCollision(player, platform));
